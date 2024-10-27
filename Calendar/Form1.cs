@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using System.Security.Cryptography.Pkcs;
 
 namespace Calendar
@@ -5,7 +6,7 @@ namespace Calendar
     public partial class Form1 : Form
     {
         AutoCompleteStringCollection stringCollection = new AutoCompleteStringCollection();
-
+        List<Person> emploees = new List<Person>();
         public Form1()
         {
             InitializeComponent();
@@ -13,6 +14,7 @@ namespace Calendar
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dateTimePicker1.Visible = true;
             dateTimePicker1.Enabled = true;
 
         }
@@ -73,30 +75,68 @@ namespace Calendar
             textBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
             foreach (var name in directoryInfo.EnumerateFiles("*.txt"))
             {
+                Person person = new Person();
                 using (StreamReader sr = new StreamReader(name.Name))
                 {
+
                     while (!sr.EndOfStream)
                     {
                         string line = sr.ReadLine();
-                        if (line.StartsWith("Дата рождения:"))
+                        if (line == String.Empty)
+                            continue;
+
+
+
+                        string head = line[..(line.IndexOf(":"))];
+                        string tail = line[(line.IndexOf(":") + 1)..].Trim();
+                        switch (head)
                         {
-                            string[] temp = line.Split(new char[] { ':' });
-                            string dateString = temp[1].Trim();
-                            if (temp.Length > 1 && dateString.Length > 0)
-                                listBox1.Items.Add(dateString);
-                            else
-                                listBox1.Items.Add("Нет данных");
-                            break;
+                            case "Фамилия":
+                                person.LastName = tail;
+                                break;
+                            case "Имя":
+                                person.FirstName = tail;
+                                break;
+                            case "Отчество":
+                                person.MiddleName = tail;
+                                break;
+                            case "Дата рождения":
+                                if (!String.IsNullOrEmpty(tail))
+                                    person.Birthdate = DateOnly.Parse(tail);
+                                else
+                                    person.Birthdate = DateOnly.Parse("1970-01-01");
+                                break;
+                            default:
+                                break;
                         }
+
                     }
 
                 }
+                emploees.Add(person);
+            }
+            foreach (Person item in emploees)
+            {
+                listBox1.Items.Add($"{item.Id} {item.LastName} {item.FirstName}");
             }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show($"{(sender as ListBox).SelectedItem}");
+            string item = $"{(sender as ListBox).SelectedItem}";
+            int id = int.Parse(item[..item.IndexOf(" ")]);
+            Person person = emploees.Where(p => p.Id == id).FirstOrDefault();
+            textBox1.Text = person.LastName;
+            textBox2.Text = person.FirstName;
+            textBox3.Text = person.MiddleName;
+            dateTimePicker1.Enabled = false;
+            dateTimePicker1.Visible = false;
+            textBox4.Text = person.Birthdate.ToShortDateString();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show($"{(sender as ComboBox).SelectedItem}");
         }
     }
 }
