@@ -213,14 +213,25 @@ namespace Calendar
         private void button7_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
-            DialogResult dialogResult =  form2.ShowDialog("Привет группа 311");
-            if(dialogResult == DialogResult.OK)
+            form2.MdiParent = this;
+            DialogResult dialogResult = form2.ShowDialog("Привет группа 311");
+            if (dialogResult == DialogResult.OK)
             {
                 this.textBox1.Text = form2.person.LastName;
-                this.textBox2.Text  = form2.person.FirstName;
+                this.textBox2.Text = form2.person.FirstName;
                 this.textBox3.Text = form2.person.MiddleName;
                 this.textBox4.Text = form2.person.Birthdate.ToShortDateString();
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            this.IsMdiContainer = true;
+            form3.MdiParent = this;
+            form3.Show();
+            this.BackColor = Color.White;
+
         }
     }
 }

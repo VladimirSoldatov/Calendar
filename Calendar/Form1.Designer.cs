@@ -62,6 +62,7 @@
             button6 = new Button();
             button7 = new Button();
             folderBrowserDialog1 = new FolderBrowserDialog();
+            button8 = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
@@ -257,7 +258,7 @@
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, toolStripStatusLabel2 });
             statusStrip1.Location = new Point(0, 497);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(1018, 22);
+            statusStrip1.Size = new Size(1443, 22);
             statusStrip1.TabIndex = 23;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -318,11 +319,22 @@
             button7.UseVisualStyleBackColor = true;
             button7.Click += button7_Click;
             // 
+            // button8
+            // 
+            button8.Location = new Point(826, 396);
+            button8.Name = "button8";
+            button8.Size = new Size(75, 23);
+            button8.TabIndex = 29;
+            button8.Text = "button8";
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1018, 519);
+            ClientSize = new Size(1443, 519);
+            Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(button6);
             Controls.Add(trackBar3);
@@ -400,5 +412,6 @@
         private Button button6;
         private Button button7;
         private FolderBrowserDialog folderBrowserDialog1;
+        private Button button8;
     }
 }
