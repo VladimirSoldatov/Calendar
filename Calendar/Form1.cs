@@ -5,19 +5,19 @@ using static System.Windows.Forms.DataFormats;
 
 namespace Calendar
 {
-    public enum DateTimeFormat { ShowClock, ShowDate };
+   
     public partial class Form1 : Form
     {
         AutoCompleteStringCollection stringCollection = new AutoCompleteStringCollection();
         List<Person> emploees = new List<Person>();
-        DateTimeFormat format;
+        MenuStrip menuStripRussian;
+        MenuStrip menuStripEnglish;
         public Form1()
         {
             InitializeComponent();
             progressBar1.Minimum = 0;
             progressBar1.Maximum = 100;
             toolTip1.SetToolTip(button4, "Test Message");
-            format = DateTimeFormat.ShowClock;
             timer1.Enabled = true;
             trackBar1.Minimum = 0;
             trackBar1.Maximum = 255;
@@ -25,6 +25,16 @@ namespace Calendar
             trackBar2.Maximum = 255;
             trackBar3.Minimum = 0;
             trackBar3.Maximum = 255;
+
+        
+            menuStripRussian = menuStrip1;
+            menuStripEnglish = menuStripRussian;
+            menuStripEnglish.Visible = false;
+            button1.Text = "English";
+            menuStripEnglish.Items[0].Text = "File";
+            menuStripEnglish.Items[1].Text = "Style";
+            menuStripEnglish.Items[2].Text = "Parent";
+
 
         }
 
@@ -230,7 +240,77 @@ namespace Calendar
             this.IsMdiContainer = true;
             form3.MdiParent = this;
             form3.Show();
-            this.BackColor = Color.White;
+
+
+        }
+
+        private void îòêðûòüToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (!String.IsNullOrEmpty(textBox6.Text))
+                    textBox6.Text = String.Empty;
+                using (StreamReader sr = new StreamReader(openFileDialog.FileName))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        textBox6.Text += sr.ReadLine() + Environment.NewLine;
+                    }
+                }
+            }
+        }
+
+        private void redToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((sender as ToolStripMenuItem).Checked)
+                this.BackColor = Color.FromArgb(this.BackColor.A, 255, this.BackColor.G == 240 ? 0 : this.BackColor.G, this.BackColor.B == 240 ? 0 : this.BackColor.B);
+            else
+                this.BackColor = Color.FromArgb(this.BackColor.A, 0, this.BackColor.G == 240 ? 0 : this.BackColor.G, this.BackColor.B == 240 ? 0 : this.BackColor.B);
+
+        }
+
+        private void greenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((sender as ToolStripMenuItem).Checked)
+            {
+                this.BackColor = Color.FromArgb(this.BackColor.A, this.BackColor.R == 240 ? 0 : this.BackColor.R, 255, this.BackColor.B == 240 ? 0 : this.BackColor.B);
+            }
+            else
+            {
+                this.BackColor = Color.FromArgb(this.BackColor.A, this.BackColor.R == 240 ? 0 : this.BackColor.R, 0, this.BackColor.B == 240 ? 0 : this.BackColor.B);
+
+            }
+        }
+
+        private void blueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((sender as ToolStripMenuItem).Checked)
+                this.BackColor = Color.FromArgb(this.BackColor.A, this.BackColor.R == 240 ? 0 : this.BackColor.R, this.BackColor.G == 240 ? 0 : this.BackColor.G, 255);
+            else
+                this.BackColor = Color.FromArgb(this.BackColor.A, this.BackColor.R == 240 ? 0 : this.BackColor.R, this.BackColor.G == 240 ? 0 : this.BackColor.G, 0);
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if ((sender as Button).Text.CompareTo("Ðóññêèé") == 0)
+            {
+                (sender as Button).Text = "English";
+                menuStripEnglish.Visible = false;
+                menuStripRussian.Visible = true;
+                menuStrip1 = menuStripEnglish;
+  
+
+            }
+            else
+            {
+                (sender as Button).Text = "Ðóññêèé";
+
+                menuStripEnglish.Visible = true;
+                menuStripRussian.Visible = false;
+                menuStrip1 = menuStripRussian;
+            }
 
         }
     }

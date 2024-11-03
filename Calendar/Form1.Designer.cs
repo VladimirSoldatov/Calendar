@@ -63,11 +63,27 @@
             button7 = new Button();
             folderBrowserDialog1 = new FolderBrowserDialog();
             button8 = new Button();
+            menuStrip1 = new MenuStrip();
+            открытьToolStripMenuItem = new ToolStripMenuItem();
+            открытьToolStripMenuItem1 = new ToolStripMenuItem();
+            отредактироватьToolStripMenuItem = new ToolStripMenuItem();
+            сохранитьToolStripMenuItem = new ToolStripMenuItem();
+            выйтиToolStripMenuItem = new ToolStripMenuItem();
+            styleToolStripMenuItem = new ToolStripMenuItem();
+            redToolStripMenuItem = new ToolStripMenuItem();
+            greenToolStripMenuItem = new ToolStripMenuItem();
+            blueToolStripMenuItem = new ToolStripMenuItem();
+            родительскийToolStripMenuItem = new ToolStripMenuItem();
+            дочернийToolStripMenuItem = new ToolStripMenuItem();
+            поддочернийToolStripMenuItem = new ToolStripMenuItem();
+            textBox6 = new TextBox();
+            button9 = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBar3).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dateTimePicker1
@@ -329,11 +345,124 @@
             button8.UseVisualStyleBackColor = true;
             button8.Click += button8_Click;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { открытьToolStripMenuItem, styleToolStripMenuItem, родительскийToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1443, 24);
+            menuStrip1.TabIndex = 30;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // открытьToolStripMenuItem
+            // 
+            открытьToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { открытьToolStripMenuItem1, отредактироватьToolStripMenuItem, сохранитьToolStripMenuItem, выйтиToolStripMenuItem });
+            открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
+            открытьToolStripMenuItem.Size = new Size(48, 20);
+            открытьToolStripMenuItem.Text = "Файл";
+            // 
+            // открытьToolStripMenuItem1
+            // 
+            открытьToolStripMenuItem1.Name = "открытьToolStripMenuItem1";
+            открытьToolStripMenuItem1.ShortcutKeys = Keys.Control | Keys.O;
+            открытьToolStripMenuItem1.Size = new Size(168, 22);
+            открытьToolStripMenuItem1.Text = "Открыть";
+            открытьToolStripMenuItem1.Click += открытьToolStripMenuItem1_Click;
+            // 
+            // отредактироватьToolStripMenuItem
+            // 
+            отредактироватьToolStripMenuItem.Name = "отредактироватьToolStripMenuItem";
+            отредактироватьToolStripMenuItem.Size = new Size(168, 22);
+            отредактироватьToolStripMenuItem.Text = "Отредактировать";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            сохранитьToolStripMenuItem.Size = new Size(168, 22);
+            сохранитьToolStripMenuItem.Text = "Сохранить";
+            // 
+            // выйтиToolStripMenuItem
+            // 
+            выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
+            выйтиToolStripMenuItem.Size = new Size(168, 22);
+            выйтиToolStripMenuItem.Text = "Выйти";
+            // 
+            // styleToolStripMenuItem
+            // 
+            styleToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { redToolStripMenuItem, greenToolStripMenuItem, blueToolStripMenuItem });
+            styleToolStripMenuItem.Name = "styleToolStripMenuItem";
+            styleToolStripMenuItem.Size = new Size(44, 20);
+            styleToolStripMenuItem.Text = "Style";
+            // 
+            // redToolStripMenuItem
+            // 
+            redToolStripMenuItem.CheckOnClick = true;
+            redToolStripMenuItem.Name = "redToolStripMenuItem";
+            redToolStripMenuItem.Size = new Size(105, 22);
+            redToolStripMenuItem.Text = "Red";
+            redToolStripMenuItem.Click += redToolStripMenuItem_Click;
+            // 
+            // greenToolStripMenuItem
+            // 
+            greenToolStripMenuItem.CheckOnClick = true;
+            greenToolStripMenuItem.Name = "greenToolStripMenuItem";
+            greenToolStripMenuItem.Size = new Size(105, 22);
+            greenToolStripMenuItem.Text = "Green";
+            greenToolStripMenuItem.Click += greenToolStripMenuItem_Click;
+            // 
+            // blueToolStripMenuItem
+            // 
+            blueToolStripMenuItem.CheckOnClick = true;
+            blueToolStripMenuItem.Name = "blueToolStripMenuItem";
+            blueToolStripMenuItem.Size = new Size(105, 22);
+            blueToolStripMenuItem.Text = "Blue";
+            blueToolStripMenuItem.Click += blueToolStripMenuItem_Click;
+            // 
+            // родительскийToolStripMenuItem
+            // 
+            родительскийToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { дочернийToolStripMenuItem });
+            родительскийToolStripMenuItem.Name = "родительскийToolStripMenuItem";
+            родительскийToolStripMenuItem.Size = new Size(96, 20);
+            родительскийToolStripMenuItem.Text = "Родительский";
+            // 
+            // дочернийToolStripMenuItem
+            // 
+            дочернийToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { поддочернийToolStripMenuItem });
+            дочернийToolStripMenuItem.Name = "дочернийToolStripMenuItem";
+            дочернийToolStripMenuItem.Size = new Size(180, 22);
+            дочернийToolStripMenuItem.Text = "Дочерний";
+            // 
+            // поддочернийToolStripMenuItem
+            // 
+            поддочернийToolStripMenuItem.Name = "поддочернийToolStripMenuItem";
+            поддочернийToolStripMenuItem.Size = new Size(150, 22);
+            поддочернийToolStripMenuItem.Text = "Поддочерний";
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(999, 72);
+            textBox6.Multiline = true;
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(412, 351);
+            textBox6.TabIndex = 31;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(1026, 446);
+            button9.Name = "button9";
+            button9.Size = new Size(75, 23);
+            button9.TabIndex = 32;
+            button9.Text = "Русский";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1443, 519);
+            Controls.Add(button9);
+            Controls.Add(textBox6);
             Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(button6);
@@ -341,6 +470,7 @@
             Controls.Add(trackBar2);
             Controls.Add(trackBar1);
             Controls.Add(statusStrip1);
+            Controls.Add(menuStrip1);
             Controls.Add(numericUpDown1);
             Controls.Add(button5);
             Controls.Add(label1);
@@ -362,6 +492,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dateTimePicker1);
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
@@ -373,6 +504,8 @@
             ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBar2).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBar3).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -413,5 +546,20 @@
         private Button button7;
         private FolderBrowserDialog folderBrowserDialog1;
         private Button button8;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem открытьToolStripMenuItem;
+        private ToolStripMenuItem открытьToolStripMenuItem1;
+        private ToolStripMenuItem отредактироватьToolStripMenuItem;
+        private ToolStripMenuItem сохранитьToolStripMenuItem;
+        private ToolStripMenuItem выйтиToolStripMenuItem;
+        private TextBox textBox6;
+        private ToolStripMenuItem styleToolStripMenuItem;
+        private ToolStripMenuItem redToolStripMenuItem;
+        private ToolStripMenuItem greenToolStripMenuItem;
+        private ToolStripMenuItem blueToolStripMenuItem;
+        private ToolStripMenuItem родительскийToolStripMenuItem;
+        private ToolStripMenuItem дочернийToolStripMenuItem;
+        private ToolStripMenuItem поддочернийToolStripMenuItem;
+        private Button button9;
     }
 }
