@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dateTimePicker1 = new DateTimePicker();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
@@ -43,6 +43,30 @@
             listBox1 = new ListBox();
             textBox4 = new TextBox();
             comboBox1 = new ComboBox();
+            checkedListBox1 = new CheckedListBox();
+            button4 = new Button();
+            textBox5 = new TextBox();
+            listBox2 = new ListBox();
+            progressBar1 = new ProgressBar();
+            label1 = new Label();
+            button5 = new Button();
+            numericUpDown1 = new NumericUpDown();
+            toolTip1 = new ToolTip(components);
+            statusStrip1 = new StatusStrip();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            toolStripStatusLabel2 = new ToolStripStatusLabel();
+            timer1 = new System.Windows.Forms.Timer(components);
+            trackBar1 = new TrackBar();
+            trackBar2 = new TrackBar();
+            trackBar3 = new TrackBar();
+            button6 = new Button();
+            button7 = new Button();
+            folderBrowserDialog1 = new FolderBrowserDialog();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar3).BeginInit();
             SuspendLayout();
             // 
             // dateTimePicker1
@@ -156,14 +180,163 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(310, 23);
             comboBox1.TabIndex = 13;
-            comboBox1.SelectedText = "Не выбрано";
+            comboBox1.Text = "Не выбрано";
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // checkedListBox1
+            // 
+            checkedListBox1.FormattingEnabled = true;
+            checkedListBox1.Items.AddRange(new object[] { "Test 1", "Test 2" });
+            checkedListBox1.Location = new Point(529, 68);
+            checkedListBox1.Name = "checkedListBox1";
+            checkedListBox1.Size = new Size(136, 94);
+            checkedListBox1.TabIndex = 14;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(529, 255);
+            button4.Name = "button4";
+            button4.Size = new Size(136, 23);
+            button4.TabIndex = 16;
+            button4.Text = "ChecedListBoxButtom";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(529, 199);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(136, 23);
+            textBox5.TabIndex = 17;
+            // 
+            // listBox2
+            // 
+            listBox2.FormattingEnabled = true;
+            listBox2.ItemHeight = 15;
+            listBox2.Location = new Point(701, 72);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(187, 79);
+            listBox2.TabIndex = 18;
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(529, 327);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(136, 23);
+            progressBar1.TabIndex = 19;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(529, 367);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 20;
+            label1.Text = "label1";
+            // 
+            // button5
+            // 
+            button5.Location = new Point(529, 396);
+            button5.Name = "button5";
+            button5.Size = new Size(75, 23);
+            button5.TabIndex = 21;
+            button5.Text = "button5";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            button5.MouseHover += button5_MouseHover;
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(610, 399);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(55, 23);
+            numericUpDown1.TabIndex = 22;
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, toolStripStatusLabel2 });
+            statusStrip1.Location = new Point(0, 497);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(1018, 22);
+            statusStrip1.TabIndex = 23;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(118, 17);
+            toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripStatusLabel2
+            // 
+            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            toolStripStatusLabel2.Size = new Size(118, 17);
+            toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
+            // trackBar1
+            // 
+            trackBar1.Location = new Point(705, 227);
+            trackBar1.Name = "trackBar1";
+            trackBar1.Size = new Size(244, 45);
+            trackBar1.TabIndex = 24;
+            // 
+            // trackBar2
+            // 
+            trackBar2.Location = new Point(705, 285);
+            trackBar2.Name = "trackBar2";
+            trackBar2.Size = new Size(244, 45);
+            trackBar2.TabIndex = 25;
+            // 
+            // trackBar3
+            // 
+            trackBar3.Location = new Point(705, 347);
+            trackBar3.Name = "trackBar3";
+            trackBar3.Size = new Size(244, 45);
+            trackBar3.TabIndex = 26;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(705, 396);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 27;
+            button6.Text = "button6";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(529, 457);
+            button7.Name = "button7";
+            button7.Size = new Size(136, 23);
+            button7.TabIndex = 28;
+            button7.Text = "Open new Window";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1018, 519);
+            Controls.Add(button7);
+            Controls.Add(button6);
+            Controls.Add(trackBar3);
+            Controls.Add(trackBar2);
+            Controls.Add(trackBar1);
+            Controls.Add(statusStrip1);
+            Controls.Add(numericUpDown1);
+            Controls.Add(button5);
+            Controls.Add(label1);
+            Controls.Add(progressBar1);
+            Controls.Add(listBox2);
+            Controls.Add(textBox5);
+            Controls.Add(button4);
+            Controls.Add(checkedListBox1);
             Controls.Add(comboBox1);
             Controls.Add(textBox4);
             Controls.Add(listBox1);
@@ -182,6 +355,12 @@
             Text = "Form1";
             WindowState = FormWindowState.Minimized;
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBar3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -189,7 +368,6 @@
         #endregion
 
         private DateTimePicker dateTimePicker1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button button1;
         private Button button2;
         private Button button3;
@@ -203,5 +381,24 @@
         private ListBox listBox1;
         private TextBox textBox4;
         private ComboBox comboBox1;
+        private CheckedListBox checkedListBox1;
+        private Button button4;
+        private TextBox textBox5;
+        private ListBox listBox2;
+        private ProgressBar progressBar1;
+        private Label label1;
+        private Button button5;
+        private NumericUpDown numericUpDown1;
+        private ToolTip toolTip1;
+        private StatusStrip statusStrip1;
+        private System.Windows.Forms.Timer timer1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel toolStripStatusLabel2;
+        private TrackBar trackBar1;
+        private TrackBar trackBar2;
+        private TrackBar trackBar3;
+        private Button button6;
+        private Button button7;
+        private FolderBrowserDialog folderBrowserDialog1;
     }
 }

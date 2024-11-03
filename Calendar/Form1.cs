@@ -1,15 +1,31 @@
+using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Security.Cryptography.Pkcs;
+using static System.Windows.Forms.DataFormats;
 
 namespace Calendar
 {
+    public enum DateTimeFormat { ShowClock, ShowDate };
     public partial class Form1 : Form
     {
         AutoCompleteStringCollection stringCollection = new AutoCompleteStringCollection();
         List<Person> emploees = new List<Person>();
+        DateTimeFormat format;
         public Form1()
         {
             InitializeComponent();
+            progressBar1.Minimum = 0;
+            progressBar1.Maximum = 100;
+            toolTip1.SetToolTip(button4, "Test Message");
+            format = DateTimeFormat.ShowClock;
+            timer1.Enabled = true;
+            trackBar1.Minimum = 0;
+            trackBar1.Maximum = 255;
+            trackBar2.Minimum = 0;
+            trackBar2.Maximum = 255;
+            trackBar3.Minimum = 0;
+            trackBar3.Maximum = 255;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -137,6 +153,74 @@ namespace Calendar
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             MessageBox.Show($"{(sender as ComboBox).SelectedItem}");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            // проверяет, чтобы строка не была пустой
+            if (!String.IsNullOrEmpty(this.textBox5.Text))
+            {
+                // проверяет, чтобы значения были уникальными
+                if (!this.checkedListBox1.Items.Contains(this.textBox5.Text))
+                    this.checkedListBox1.Items.Add(this.textBox5.Text);
+                else
+                    MessageBox.Show("CheckedListBox already contains this item");
+            }
+            else
+                MessageBox.Show("Empty string");
+
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            progressBar1.Increment(Convert.ToInt32(numericUpDown1.Value));
+            label1.Text = $"Значение: {progressBar1.Value}";
+            numericUpDown1.Value = 0;
+        }
+
+        private void button5_MouseHover(object sender, EventArgs e)
+        {
+            MessageBox.Show("hello");
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string str;
+            str = DateTime.Now.ToShortDateString();
+            this.toolStripStatusLabel1.Text = str;
+            str = DateTime.Now.DayOfWeek.ToString();
+            this.toolStripStatusLabel2.Text = str;
+            this.toolStripStatusLabel2.Text =
+            DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(trackBar1.Value, trackBar2.Value, trackBar3.Value);
+            if (this.BackColor == Color.White)
+                return;
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter streamWriter = new StreamWriter("changes_coler.txt", true))
+                {
+                    streamWriter.WriteLine($"{this.BackColor.R}:{this.BackColor.G}:{this.BackColor.B}");
+                }
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            DialogResult dialogResult =  form2.ShowDialog("Привет группа 311");
+            if(dialogResult == DialogResult.OK)
+            {
+                this.textBox1.Text = form2.person.LastName;
+                this.textBox2.Text  = form2.person.FirstName;
+                this.textBox3.Text = form2.person.MiddleName;
+                this.textBox4.Text = form2.person.Birthdate.ToShortDateString();
+            }
         }
     }
 }
